@@ -26,6 +26,11 @@
   header p { margin: 0; opacity: .8; font-size: 15px; }
   header .by { margin-left: auto; align-self: center; text-align: right; font-size: 13px; line-height: 1.5; opacity: .9; }
   @media (max-width: 720px) { header .by { margin-left: 0; text-align: left; } }
+  /* ปุ่มคู่มือ: ตัวอักษรสีส้ม (สีโลโก้ HAL) พื้นขาว — เหมือนเว็บรวม Check MNF Forwarder */
+  header .guide { display: flex; align-items: center; gap: 6px; font-size: 13px; white-space: nowrap; }
+  header .guide svg { width: 15px; height: 15px; stroke: #fff; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  header .guide a { color: #e2501f; background: #fff; font-weight: 700; text-decoration: none; padding: 1px 10px; border-radius: 999px; border: 1.5px solid #e2501f; }
+  header .guide a:hover { background: #e2501f; color: #fff; border-color: #fff; }
   .wrap { max-width: 1400px; margin: 0 auto; }
   main { padding: 20px 16px 40px; }
   .card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 18px; margin-bottom: 18px; }
@@ -88,7 +93,9 @@
 </style>
 </head>
 <body>
-<header><div class="wrap"><span class="logo"><img src="assets/hal-logo.png" alt="Heung A Line"></span><h1>CHECK EDI VARIOUS FORMS</h1><p>ตรวจเทียบ MANIFEST กับ ENTER ชุดรวมหลายฟอร์ม (HAHM): CONSIGNEE · CNTR · STATUS · PKG · G.W. · MEAS. · MARKS · DESC · DG · TRANSIT · SHED</p><div class="by">Project by Ms. Rattana Mudlae<br>Position Import DOC.</div></div></header>
+<header><div class="wrap"><span class="logo"><img src="assets/hal-logo.png" alt="Heung A Line"></span><h1>CHECK EDI VARIOUS FORMS</h1><p>ตรวจเทียบ MANIFEST กับ ENTER ชุดรวมหลายฟอร์ม (HAHM): CONSIGNEE · CNTR · STATUS · PKG · G.W. · MEAS. · MARKS · DESC · DG · TRANSIT · SHED</p><div class="by">Project by Ms. Rattana Mudlae<br>Position Import DOC.
+  <div class="guide"><svg viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 016.5 3H20v15H6.5A2.5 2.5 0 004 20.5z"/><path d="M4 20.5A2.5 2.5 0 006.5 23H20v-5M8 7h8M8 11h6"/></svg><a href="guide.html?lang=th" target="_blank" rel="noopener">คู่มือ (ไทย)</a><a href="guide.html?lang=en" target="_blank" rel="noopener">User Guide (English)</a></div>
+</div></div></header>
 
 <main class="wrap">
   <section class="card">
@@ -131,7 +138,7 @@
     <div class="tbl"><table><thead id="thead"></thead><tbody id="tbody"></tbody></table></div>
   </section>
 </main>
-<footer><a href="https://github.com/Rattanao/Various-forms-check-edi#readme">คู่มือการใช้งาน / ดาวน์โหลดโปรแกรม</a> · <a href="https://github.com/Rattanao/Various-forms-check-edi">github.com/Rattanao/Various-forms-check-edi</a></footer>
+<footer><a href="guide.html">คู่มือการใช้งาน / User Guide</a> · <a href="https://github.com/Rattanao/Various-forms-check-edi#readme">ดาวน์โหลดโปรแกรม</a> · <a href="https://github.com/Rattanao/Various-forms-check-edi">github.com/Rattanao/Various-forms-check-edi</a></footer>
 
 <!-- ตัวอ่านฟอร์ม MAC-NELS / THE M CORP (CMS) / DSV: สำเนาจาก core.js ของเว็บนั้น ๆ (ไม่แก้ไข) -->
 <script src="macnels.js"></script>

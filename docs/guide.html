@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>คู่มือ Check EDI Various Forms · User Guide</title>
+<link rel="icon" href="assets/hal-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue: #1f3f94; --blue-dark: #17306f; --red: #e2501f;
+  --text: #2b2b2b; --muted: #6b7680; --line: #d9dee3; --soft: #f4f6fb; --bg: #ffffff;
+  --c-red: #fdd7d7; --c-org: #fce4d6; --c-yel: #fff2cc; --c-grn: #c6efce;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: "Sarabun", Tahoma, sans-serif; font-size: 15.5px; line-height: 1.7; }
+.wrap { max-width: 900px; margin: 0 auto; padding: 18px 20px 40px; }
+.top { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+.top .logo { background: #fff; border: 1px solid var(--line); border-radius: 6px; padding: 4px 8px; line-height: 0; }
+.top .logo img { height: 26px; width: auto; }
+.top a.back { margin-left: auto; color: var(--blue); font-weight: 600; text-decoration: none; font-size: 14px; }
+.langbar { position: sticky; top: 0; z-index: 2; background: var(--bg); display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 0 12px; border-bottom: 1px solid var(--line); margin-bottom: 18px; }
+.langbar .lbl { color: var(--muted); font-size: 14px; }
+.seg { display: inline-flex; border: 1.5px solid var(--blue); border-radius: 999px; overflow: hidden; }
+.seg button { font: inherit; font-weight: 600; font-size: 14px; border: 0; background: #fff; color: var(--blue); padding: 6px 18px; cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--blue); color: #fff; }
+.seg button:focus-visible { outline: 3px solid var(--red); outline-offset: -3px; }
+.toc { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 14px; }
+.toc a { color: var(--blue); text-decoration: none; font-weight: 600; }
+.toc a:hover { text-decoration: underline; }
+article[hidden] { display: none; }
+h1 { color: var(--blue); font-size: 26px; margin: 0 0 6px; line-height: 1.3; }
+h2 { color: var(--blue-dark); font-size: 19px; margin: 30px 0 10px; padding-top: 6px; border-top: 1px solid var(--line); scroll-margin-top: 70px; }
+h3 { font-size: 16px; margin: 16px 0 6px; }
+p { margin: 0 0 10px; }
+.lede { color: var(--muted); font-size: 16px; }
+code { background: var(--soft); border: 1px solid var(--line); border-radius: 4px; padding: 0 6px; font-size: .92em; }
+.flow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 12px 0 4px; font-weight: 600; font-size: 14px; }
+.flow span { border: 1px solid var(--line); border-radius: 6px; padding: 3px 10px; background: var(--soft); }
+.flow span.out { background: var(--blue); color: #fff; border-color: var(--blue); }
+.flow i { font-style: normal; color: var(--muted); }
+ol.steps { list-style: none; padding: 0; margin: 0; counter-reset: s; display: grid; gap: 12px; }
+ol.steps > li { counter-increment: s; display: grid; grid-template-columns: 30px 1fr; gap: 12px; }
+ol.steps > li::before { content: counter(s); width: 30px; height: 30px; border-radius: 50%; background: var(--blue); color: #fff; display: grid; place-items: center; font-weight: 700; font-size: 14px; }
+ol.steps b { color: var(--blue-dark); }
+.note { color: var(--muted); font-size: 14px; }
+.tbl { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; margin: 8px 0; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th { background: var(--blue); color: #fff; text-align: left; padding: 7px 10px; font-weight: 600; white-space: nowrap; }
+td { padding: 7px 10px; border-top: 1px solid var(--line); vertical-align: top; }
+td:first-child { white-space: nowrap; font-weight: 600; }
+.legend { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 8px; margin: 8px 0; }
+.legend div { display: flex; gap: 10px; align-items: flex-start; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font-size: 14px; }
+.legend i { flex: none; width: 22px; height: 22px; border-radius: 4px; border: 1px solid #c9ced6; margin-top: 1px; }
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+ul { margin: 0 0 10px; padding-left: 22px; }
+li { margin: 2px 0; }
+.alert { background: #fff6ec; border: 1px solid #f3c9a4; border-left: 4px solid var(--red); border-radius: 6px; padding: 10px 14px; margin-top: 26px; }
+@media (max-width: 600px) {
+  .wrap { padding: 12px 16px 32px; }
+  h1 { font-size: 22px; }
+  .langbar .lbl { display: none; }
+  td:first-child { white-space: normal; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="top">
+  <span class="logo"><img src="assets/hal-logo.png" alt="Heung A Line"></span>
+  <a class="back" href="./" data-th="← กลับไปหน้าตรวจ" data-en="← Back to the checker">← กลับไปหน้าตรวจ</a>
+</div>
+<div class="langbar">
+  <span class="lbl" data-th="เลือกภาษา" data-en="Language">เลือกภาษา</span>
+  <div class="seg" role="group" aria-label="Language / ภาษา">
+    <button type="button" data-lang="th" aria-pressed="true">ไทย</button>
+    <button type="button" data-lang="en" aria-pressed="false">English</button>
+  </div>
+</div>
+
+<!-- ======================= ภาษาไทย ======================= -->
+<article lang="th" id="art-th">
+  <h1>คู่มือการใช้งาน Check EDI Various Forms (HAHM)</h1>
+  <p class="lede">เวปนี้ใช้เทียบ MANIFEST ของสายเรือกับ ENTER ชุดรวมของงาน HAHM ซึ่งเป็น PDF ไฟล์เดียวที่รวมเอกสารหลาย Forwarder ได้ผลเป็นรายงาน Excel ใส่สี ช่องไหนไม่ตรงจะเห็นทันทีก่อนยื่นใบขนสินค้าขาเข้า</p>
+  <div class="flow"><span>MANIFEST (.xls/.xlsx)</span><i>+</i><span>ENTER ชุดรวม (.pdf)</span><i>→</i><span class="out">EDI HAHM.xlsx</span></div>
+  <p class="note">ไฟล์ประมวลผลในเบราว์เซอร์ของเครื่องคุณเท่านั้น ไม่มีการอัปโหลดไปที่ใด · ไม่ต้องติดตั้งโปรแกรม</p>
+  <nav class="toc">
+    <a href="#th-steps">ขั้นตอนการใช้งาน</a>
+    <a href="#th-forms">ฟอร์มที่อ่านได้</a>
+    <a href="#th-report">อ่านรายงาน</a>
+    <a href="#th-rules">กฎการเทียบ</a>
+    <a href="#th-offline">ใช้แบบออฟไลน์</a>
+    <a href="#th-help">ถ้าเจอปัญหา</a>
+  </nav>
+
+  <h2 id="th-steps">ขั้นตอนการใช้งาน</h2>
+  <ol class="steps">
+    <li><div><b>ใส่ไฟล์</b> ลากไฟล์ MANIFEST และ ENTER มาวางพร้อมกัน หรือคลิกกรอบเพื่อเลือกไฟล์
+      <br><span class="note">ตั้งชื่อไฟล์อะไรก็ได้ เวปแยกให้เอง (.xls/.xlsx = MANIFEST, .pdf = ENTER) · ENTER หลายไฟล์ของเรือลำเดียวกันใส่พร้อมกันได้</span></div></li>
+    <li><div><b>ตรวจ SHED NO.</b> ค่าเริ่มต้น: B/L ที่ STATUS เป็น CFS/LCL = <code>0141</code> · ที่เหลือ (CY) = <code>0122</code> แก้ได้ตามงาน
+      <br><span class="note">ถ้าไม่ต้องการตรวจ SHED ตาม STATUS ให้ลบทั้งสองช่อง</span></div></li>
+    <li><div><b>กด “ตรวจสอบ”</b> ใช้เวลาไม่กี่วินาที ด้านบนผลจะบอกว่า ENTER มีฟอร์มอะไรบ้างกี่หน้า และหน้าไหนเป็นภาพสแกน</div></li>
+    <li><div><b>ดูผลในตาราง</b> ค้นหา B/L / ชื่อผู้รับ / เลขตู้ ได้ · ติ๊ก “แสดงเฉพาะที่ไม่ตรง” เพื่อดูแค่แถวที่ต้องแก้</div></li>
+    <li><div><b>กด “ดาวน์โหลด EDI.xlsx”</b> ได้ไฟล์ <code>EDI HAHM.xlsx</code> หน้าตาเดียวกับตาราง</div></li>
+  </ol>
+
+  <h2 id="th-forms">ฟอร์มใน ENTER ชุดรวมที่อ่านได้</h2>
+  <p>เวปแยกชนิดของ ENTER ให้ทีละหน้า แล้วอ่านแต่ละหน้าด้วยวิธีของฟอร์มนั้น</p>
+  <div class="tbl"><table>
+    <thead><tr><th>ชนิดหน้า</th><th>อ่านอะไรบ้าง</th></tr></thead>
+    <tbody>
+      <tr><td>ARRIVAL NOTICE / สำเนา B/L ของ Heung-A</td><td>ชื่อผู้รับ (ถ้าเป็น TO ORDER ใช้ชื่อ Notify), เลขตู้, จำนวน, G.W., MEAS., MARKS, DESC และข้อความที่ลูกค้าพิมพ์เพิ่ม เช่น STATUS ลากตู้ / CLASS 9 UN 3077</td></tr>
+      <tr><td>ATTACHED RIDER</td><td>MARKS ในใบ RIDER แทนคำว่า “AS PER ATTACHED RIDER” ในหน้า B/L</td></tr>
+      <tr><td>ใบ MARK&amp;NO.</td><td>2 B/L ต่อหน้า: MARKS, จำนวน, ชนิดหีบห่อ, ผู้รับ, DESC, เลขตู้, G.W., MEAS.</td></tr>
+      <tr><td>ตาราง AMENDMENT</td><td>Cargoport, ASIA ATLANTIC, INITIAL, Handle ฯลฯ · STATUS หรือเลขตู้ที่เขียนไว้ครั้งเดียวใช้กับทุก B/L ในฉบับนั้น</td></tr>
+      <tr><td>จดหมายแก้ไข</td><td>อ่านจากป้าย เช่น CNEE / CONTAINER NO. / Status / MARKS · MARKS/DESC ไม่ตรงจะขึ้นสีส้ม (ให้คนยืนยัน)</td></tr>
+      <tr><td>MAC-NELS · THE M CORP · DSV</td><td>ใช้ตัวอ่านเดียวกับเวปของเจ้านั้น</td></tr>
+      <tr><td>ภาพสแกน</td><td>อ่านอัตโนมัติไม่ได้ — รายงานขึ้นสีส้ม “ตรวจด้วยตา” พร้อมเลขหน้า</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2 id="th-report">อ่านรายงาน</h2>
+  <p>หนึ่งแถวต่อหนึ่ง B/L ช่องซ้ายสุดสรุปว่าแถวนั้นต้องดูอะไร ค่าของ ENTER และ MANIFEST วางคู่กันทุกหัวข้อ ช่องหมายเหตุขึ้นต้นด้วย <code>[ENTER หน้า n]</code> บอกว่าค่ามาจากหน้าไหนของ PDF เปิดไปดูต้นฉบับได้ทันที</p>
+  <div class="legend">
+    <div><i style="background:#fff"></i><span><b>ขาว</b> — ไม่ผิด</span></div>
+    <div><i style="background:var(--c-grn)"></i><span><b>เขียว</b> — ผ่าน ไม่พบจุดผิด</span></div>
+    <div><i style="background:var(--c-red)"></i><span><b>แดง ⚠</b> — ไม่ตรงกัน ต้องแก้หรือยืนยันก่อนยื่น</span></div>
+    <div><i style="background:var(--c-org)"></i><span><b>ส้ม</b> — ต้องให้คนยืนยัน หรือ ENTER เป็นภาพสแกนต้องตรวจด้วยตา</span></div>
+    <div><i style="background:var(--c-yel)"></i><span><b>เหลือง</b> — ไม่มีเอกสาร ENTER ให้เทียบ</span></div>
+  </div>
+  <div class="cols">
+    <div>
+      <h3>หัวข้อที่เทียบทุก B/L</h3>
+      <ul>
+        <li>CONSIGNEE และ TAX ID</li>
+        <li>CONTAINER NO. และ STATUS</li>
+        <li>จำนวนและชนิดหีบห่อ (PKG), G.W., MEAS.</li>
+        <li>MARKS และ DESCRIPTION</li>
+        <li>SHED NO., ประเทศปลายทาง, CARGO MOVEMENT</li>
+      </ul>
+    </div>
+    <div>
+      <h3>เตือนเสมอเมื่อพบ</h3>
+      <ul>
+        <li>DG (CLASS / UN)</li>
+        <li>REEFER TEMP</li>
+        <li>INTRANSIT / TRANSHIPMENT</li>
+        <li>MEAS. ใน MANIFEST เป็น 0.000 แต่ ENTER มีค่า</li>
+        <li>B/L ที่มีใน ENTER แต่ไม่มีใน MANIFEST (วิกฤต)</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 id="th-rules">กฎการเทียบที่ควรรู้</h2>
+  <ul>
+    <li><b>STATUS:</b> CY / CY-CY / FCL / ลากตู้ = <code>CY</code> · LCL / ขน = <code>LCL</code> · CFS / LCL-CFS / เปิดตู้ = <code>LCL/CFS</code></li>
+    <li><b>SHED NO.:</b> ใช้ STATUS ตามคำสั่งใน ENTER (ถ้า ENTER ไม่ระบุจึงใช้ของ MANIFEST) → CFS/LCL ต้องเป็นเลขช่องแรก ที่เหลือต้องเป็นเลขช่องที่สอง</li>
+    <li><b>ARRIVAL NOTICE / สำเนา B/L ของ Heung-A:</b> ถ้า MARKS/DESC ใน MANIFEST เป็นส่วนหนึ่งของข้อความบน B/L ถือว่าตรง หมายเหตุจะบอกว่า ENTER มีข้อความอะไรเพิ่ม</li>
+    <li><b>ข้อความสีแดงที่ลูกค้าพิมพ์ทับ PDF</b> = คำสั่งจริงของลูกค้า (STATUS, DG, REEFER, แก้ชื่อผู้รับ, เลขตู้)</li>
+    <li>B/L ที่มีหลายตู้ ต้องตรงกับ MANIFEST ครบทุกตู้</li>
+    <li><b>TRANSHIPMENT:</b> CARGO MOVEMENT ต้องเป็น <code>3-TRANSHIPMENT</code></li>
+    <li>SHED / ประเทศปลายทาง / CARGO MOVEMENT / TAX ID ถ้าถูกต้องตามกฎจะแสดง <code>-</code></li>
+  </ul>
+
+  <h2 id="th-offline">ใช้แบบออฟไลน์ (Python)</h2>
+  <ol class="steps">
+    <li><div><b>ติดตั้ง Python 3</b> จาก python.org (ติ๊ก “Add python.exe to PATH”)</div></li>
+    <li><div><b>ดาวน์โหลดโปรแกรม</b> หน้า <a href="https://github.com/Rattanao/Various-forms-check-edi">GitHub repo</a> กด Code → Download ZIP แล้วแตกไฟล์</div></li>
+    <li><div><b>ใส่ไฟล์</b> MANIFEST และ ENTER ในโฟลเดอร์ <code>input</code> แล้วดับเบิลคลิก <code>run-check-edi.bat</code></div></li>
+    <li><div><b>ผลอยู่ใน</b> <code>output\EDI-HAHM.xlsx</code> (รอบต่อไปเป็น -2, -3 … ไม่ทับไฟล์เดิม) โปรแกรมตรวจย้อนให้ด้วยว่าทุกค่าในรายงานมาจากไฟล์จริง</div></li>
+  </ol>
+
+  <h2 id="th-help">ถ้าเจอปัญหา</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>อาการ</th><th>วิธีแก้</th></tr></thead>
+    <tbody>
+      <tr><td>ปุ่ม “ตรวจสอบ” กดไม่ได้</td><td>ยังใส่ไฟล์ไม่ครบ ต้องมีทั้ง MANIFEST และ ENTER</td></tr>
+      <tr><td>B/L ขึ้นเหลือง / ส้ม “ตรวจด้วยตา”</td><td>B/L นั้นอยู่ในหน้าที่เป็นภาพสแกน หรือไม่มีใน ENTER — เปิด PDF หน้าที่หมายเหตุบอกแล้วตรวจเอง</td></tr>
+      <tr><td>ฝั่ง ENTER ว่างหลายช่อง</td><td>อาจเป็นฟอร์มใหม่ที่ยังไม่รองรับ ส่งไฟล์ให้ Rattana เพื่อเพิ่มฟอร์ม</td></tr>
+      <tr><td>หน้าเวปยังเป็นแบบเก่า</td><td>กด <code>Ctrl</code> + <code>F5</code> เพื่อโหลดหน้าใหม่</td></tr>
+      <tr><td>หาไฟล์ที่ดาวน์โหลดไม่เจอ</td><td>ดูในโฟลเดอร์ Downloads ชื่อ <code>EDI HAHM.xlsx</code></td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="alert">รายงานนี้เป็นตัวช่วยตรวจเท่านั้น ก่อนยื่นใบขนต้องให้คนตรวจทุกช่องที่เป็นสีแดงหรือสีส้ม และทุกหน้าที่เป็นภาพสแกนเสมอ</div>
+</article>
+
+<!-- ======================= English ======================= -->
+<article lang="en" id="art-en" hidden>
+  <h1>Check EDI Various Forms (HAHM) — User Guide</h1>
+  <p class="lede">This page compares the carrier's MANIFEST with the HAHM ENTER bundle, a single PDF that combines documents from many forwarders. The result is a colour-coded Excel report, so every mismatch is visible before the import customs declaration is filed.</p>
+  <div class="flow"><span>MANIFEST (.xls/.xlsx)</span><i>+</i><span>ENTER bundle (.pdf)</span><i>→</i><span class="out">EDI HAHM.xlsx</span></div>
+  <p class="note">Files are processed only in your browser; nothing is uploaded. No installation needed.</p>
+  <nav class="toc">
+    <a href="#en-steps">How to use</a>
+    <a href="#en-forms">Forms it reads</a>
+    <a href="#en-report">Reading the report</a>
+    <a href="#en-rules">Comparison rules</a>
+    <a href="#en-offline">Offline use</a>
+    <a href="#en-help">Troubleshooting</a>
+  </nav>
+
+  <h2 id="en-steps">How to use</h2>
+  <ol class="steps">
+    <li><div><b>Add the files.</b> Drag the MANIFEST and ENTER files onto the box together, or click the box to choose them.
+      <br><span class="note">Any file name works; the page sorts them itself (.xls/.xlsx = MANIFEST, .pdf = ENTER). Several ENTER files for the same vessel can be added at once.</span></div></li>
+    <li><div><b>Check the SHED NO. boxes.</b> Defaults: B/Ls with STATUS CFS/LCL = <code>0141</code>, all others (CY) = <code>0122</code>. Change them to suit the job.
+      <br><span class="note">Clear both boxes to skip the SHED-by-status check.</span></div></li>
+    <li><div><b>Click “ตรวจสอบ” (Check).</b> It takes a few seconds. Above the table the page lists which forms the ENTER contains, how many pages each, and which pages are scans.</div></li>
+    <li><div><b>Review the table.</b> Search by B/L, consignee or container; tick “แสดงเฉพาะที่ไม่ตรง” to show only rows that need attention.</div></li>
+    <li><div><b>Click “ดาวน์โหลด EDI.xlsx”.</b> You get <code>EDI HAHM.xlsx</code>, laid out like the table.</div></li>
+  </ol>
+
+  <h2 id="en-forms">Forms it reads inside the ENTER bundle</h2>
+  <p>The page identifies each ENTER page and reads it the way that form is laid out.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Page type</th><th>What is read</th></tr></thead>
+    <tbody>
+      <tr><td>Heung-A ARRIVAL NOTICE / B/L copy</td><td>Consignee (the Notify name when it says TO ORDER), containers, package count, G.W., MEAS., MARKS, DESC, and anything the customer typed on, such as STATUS ลากตู้ or CLASS 9 UN 3077</td></tr>
+      <tr><td>ATTACHED RIDER</td><td>The rider's marks replace “AS PER ATTACHED RIDER” on the B/L page</td></tr>
+      <tr><td>MARK&amp;NO. sheet</td><td>Two B/Ls per page: marks, package count and type, consignee, description, container, G.W., MEAS.</td></tr>
+      <tr><td>AMENDMENT table</td><td>Cargoport, ASIA ATLANTIC, INITIAL, Handle and similar. A STATUS or container stated once applies to every B/L of that document</td></tr>
+      <tr><td>Amendment letter</td><td>Read from its labels (CNEE / CONTAINER NO. / Status / MARKS …). MARKS/DESC mismatches are orange (needs a person to confirm)</td></tr>
+      <tr><td>MAC-NELS · THE M CORP · DSV</td><td>Read with the same reader as that forwarder's own page</td></tr>
+      <tr><td>Scanned page</td><td>Cannot be read automatically; the report shows it in orange as “ตรวจด้วยตา” (check by eye) with the page number</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2 id="en-report">Reading the report</h2>
+  <p>One row per B/L. The leftmost column summarises what needs attention; ENTER and MANIFEST values sit side by side for every item. The notes column starts with <code>[ENTER หน้า n]</code>, the PDF page the values came from, so you can open the source straight away.</p>
+  <div class="legend">
+    <div><i style="background:#fff"></i><span><b>White</b> — no error</span></div>
+    <div><i style="background:var(--c-grn)"></i><span><b>Green</b> — passed</span></div>
+    <div><i style="background:var(--c-red)"></i><span><b>Red ⚠</b> — mismatch; fix or confirm before filing</span></div>
+    <div><i style="background:var(--c-org)"></i><span><b>Orange</b> — needs a person to confirm, or the ENTER page is a scan to check by eye</span></div>
+    <div><i style="background:var(--c-yel)"></i><span><b>Yellow</b> — no ENTER document to compare</span></div>
+  </div>
+  <div class="cols">
+    <div>
+      <h3>Compared for every B/L</h3>
+      <ul>
+        <li>CONSIGNEE and TAX ID</li>
+        <li>CONTAINER NO. and STATUS</li>
+        <li>Package count and type, G.W., MEAS.</li>
+        <li>MARKS and DESCRIPTION</li>
+        <li>SHED NO., destination country, CARGO MOVEMENT</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Always flagged when found</h3>
+      <ul>
+        <li>DG (CLASS / UN)</li>
+        <li>REEFER TEMP</li>
+        <li>INTRANSIT / TRANSHIPMENT</li>
+        <li>MEAS. 0.000 in MANIFEST while ENTER has a value</li>
+        <li>B/L in ENTER but missing from MANIFEST (critical)</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 id="en-rules">Comparison rules worth knowing</h2>
+  <ul>
+    <li><b>STATUS:</b> CY / CY-CY / FCL / ลากตู้ = <code>CY</code> · LCL / ขน = <code>LCL</code> · CFS / LCL-CFS / เปิดตู้ = <code>LCL/CFS</code></li>
+    <li><b>SHED NO.:</b> uses the customer's STATUS in ENTER (MANIFEST's when ENTER gives none): CFS/LCL must match the first box, everything else the second</li>
+    <li><b>Heung-A ARRIVAL NOTICE / B/L copy:</b> when the MANIFEST MARKS/DESC is part of the B/L text it counts as a match; the note lists the extra B/L text</li>
+    <li><b>Red text typed on the PDF</b> is the customer's real instruction (STATUS, DG, REEFER, consignee correction, containers)</li>
+    <li>A B/L with several containers must match every container in the MANIFEST</li>
+    <li><b>TRANSHIPMENT:</b> CARGO MOVEMENT must be <code>3-TRANSHIPMENT</code></li>
+    <li>SHED / destination / CARGO MOVEMENT / TAX ID show <code>-</code> when correct</li>
+  </ul>
+
+  <h2 id="en-offline">Offline use (Python)</h2>
+  <ol class="steps">
+    <li><div><b>Install Python 3</b> from python.org (tick “Add python.exe to PATH”).</div></li>
+    <li><div><b>Download the program:</b> on the <a href="https://github.com/Rattanao/Various-forms-check-edi">GitHub repo</a> click Code → Download ZIP and extract it.</div></li>
+    <li><div><b>Put the files</b> (MANIFEST and ENTER) in the <code>input</code> folder and double-click <code>run-check-edi.bat</code>.</div></li>
+    <li><div><b>The result</b> is <code>output\EDI-HAHM.xlsx</code> (next runs: -2, -3 … existing reports are never overwritten). It also traces every report value back to the original files.</div></li>
+  </ol>
+
+  <h2 id="en-help">Troubleshooting</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Symptom</th><th>What to do</th></tr></thead>
+    <tbody>
+      <tr><td>“ตรวจสอบ” cannot be clicked</td><td>Both a MANIFEST and an ENTER file are needed</td></tr>
+      <tr><td>A B/L is yellow / orange “ตรวจด้วยตา”</td><td>The B/L is on a scanned page or not in the ENTER — open the PDF page named in the note and check it yourself</td></tr>
+      <tr><td>Many ENTER cells are empty</td><td>It may be a new form that is not supported yet; send the file to Rattana so it can be added</td></tr>
+      <tr><td>The page still looks old</td><td>Press <code>Ctrl</code> + <code>F5</code> to reload</td></tr>
+      <tr><td>Can't find the downloaded file</td><td>Look in Downloads for <code>EDI HAHM.xlsx</code></td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="alert">This report is a checking aid only. Before filing, a person must review every red or orange cell and every scanned page.</div>
+</article>
+
+</div>
+<script>
+// เลือกภาษา: จำค่าที่เลือกไว้ในเบราว์เซอร์ (ถ้าเก็บไม่ได้ก็ใช้ภาษาไทย) · ?lang=en ใน URL เปิดภาษาอังกฤษ
+(function () {
+  const btns = document.querySelectorAll(".seg button");
+  function setLang(lang) {
+    document.documentElement.lang = lang;
+    document.getElementById("art-th").hidden = lang !== "th";
+    document.getElementById("art-en").hidden = lang !== "en";
+    btns.forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
+    document.querySelectorAll("[data-th]").forEach(el => { el.textContent = el.dataset[lang]; });
+    try { localStorage.setItem("guide-lang", lang); } catch (e) {}
+  }
+  btns.forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
+  window.setGuideLang = setLang;
+  let lang = new URLSearchParams(location.search).get("lang");
+  if (!lang) { try { lang = localStorage.getItem("guide-lang"); } catch (e) {} }
+  setLang(lang === "en" ? "en" : "th");
+})();
+</script>
+</body>
+</html>
