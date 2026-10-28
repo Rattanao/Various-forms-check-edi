@@ -90,3 +90,20 @@ HAHM-specific rules (in `apply_hahm_rules` / `annotate_report`):
 Dump each page's lines with x/y and its annotations (`page.get_text('dict')`, `page.annots()`), see which
 type it falls into (`page_kind`), and add or adjust a reader in `hahm_edi.py`. Rerun the last HAHM job
 before and after and compare every report cell; differences must be explained by the change.
+
+## Web version: Check EDI Various Forms (GitHub Pages)
+
+Repo `Rattanao/Various-forms-check-edi` (local folder `Downloads/check edi-Various forms`, pushed 2026-10-28),
+page at https://rattanao.github.io/Various-forms-check-edi/ once Pages is enabled (Settings → Pages → `main` / root).
+Same Heung A Line logo header as the other sites; SHED boxes default to CFS/LCL 0141 / others 0122.
+
+- `docs/core.js` is generated: `python src/assemble.py` = helpers/parseManifest/buildReport copied from the Freight Links
+  site's core.js (+ multi-container set compare, combined_text orange, SHED per row, Python-style numbers in notes,
+  PLTS = PALLET) + `src/hahm_enter.js` (JS port of hahm_edi.py) + `src/pdfpages.js`. Edit `src/`, never core.js.
+- `docs/macnels.js`, `cms.js`, `dsv.js` are unchanged copies of those sites' core.js (MAC-NELS, Eastern Air = CMS form, DSV).
+- pdf.js returns many PDFs word by word; `pdfPages` builds PyMuPDF-like lines from content-stream order (same baseline,
+  gap ≤ 1.5 × font size), keeps whitespace items, turns control characters (\x03) into spaces, and stores `top`
+  (baseline − 0.8 × font size) for comparisons with FreeText rectangles. Sibling readers get the old `items` format.
+- Parity 2026-10-28 on the HAHM job (65-page ENTER): 2,604 of 2,604 cells equal to hahm_edi.py (values and fills),
+  with and without the SHED rule, ignoring repeated spaces (11 cells keep 1 space where PyMuPDF kept 3). Tested in the
+  browser incl. Excel export. Re-run this parity check after any change to hahm_edi.py or src/.
